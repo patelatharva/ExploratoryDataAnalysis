@@ -23,8 +23,8 @@ summary(redWine)
 # Univariate Plots Section
 
 ```{r, echo=FALSE}
-ggplot(aes(x=as.factor(quality)),data=redWine) + 
-  geom_histogram(binwidth=1) + 
+ggplot(aes(x=as.factor(quality)),data=redWine) +
+  geom_histogram(binwidth=1) +
   ggtitle("Histogram of wine quality")
 ```
 
@@ -238,7 +238,7 @@ with(data=redWine,cor.test(volatile.acidity, pH))
 The pH is positively correlated with the volatile.acidity.
 
 ```{r warning=FALSE, echo=FALSE}
-pHAcidityPlot = 
+pHAcidityPlot =
   ggplot(aes(x=fixed.acidity+volatile.acidity,y=pH),data=redWine) +
   geom_point() +
   geom_smooth()
@@ -265,13 +265,13 @@ ggplot(aes(x=citric.acid,y=volatile.acidity),data=redWine) +
 
 with(data=redWine,cor.test(citric.acid, volatile.acidity))
 ```
-citric.acid is inversely related with volatile.acidity. It might be the case that during wine preparation, not too much volatile acidity will be added if there is already good amount of fixed acidity present due to citric acid. This will help keeping the total acidity of wine to acceptible level.
+citric.acid is inversely related with volatile.acidity. It might be the case that during wine preparation, not too much volatile acidity will be added if there is already good amount of fixed acidity present due to citric acid. This will help keeping the total acidity of wine to acceptable level.
 
 ### Exploring effect of different chemical properties in deciding the perceived quality of wine
 
 The prsence of sulfur dioxides in the wine can be detected by smell if they are present in excess amount. I want to check if there is some relation between total sulfur dioxide and quality of wine.
 ```{r warning=FALSE, echo=FALSE}
-sulfurDioxideQualityPlot = 
+sulfurDioxideQualityPlot =
   ggplot(aes(y=total.sulfur.dioxide,x=as.factor(quality)),data=redWine) +
   geom_boxplot()
 
@@ -292,7 +292,7 @@ Wines with higher fixed acidity seem to have received higher quality ratings.
 
 Next I analyse the relationship between volatile acidity and quality.
 ```{r warning=FALSE, echo=FALSE}
-volatileAcidityQualityPlot = 
+volatileAcidityQualityPlot =
   ggplot(aes(y=volatile.acidity,x=as.factor(quality)),data=redWine) +
   geom_boxplot()
 
@@ -379,7 +379,7 @@ Here, it's visible that wines with relatively low total sulfur dioxide are getti
 ggplot(aes(x=volatile.acidity,y=total.sulfur.dioxide,color=as.factor(quality))
        ,data=redWine) +
   geom_point() +
-  scale_color_brewer(type="qual") + 
+  scale_color_brewer(type="qual") +
   coord_cartesian(xlim=c(0,1.2),ylim=c(0,175))
 ```
 Most of the blue dots are concentrated in the lower left region. It's clearly visible here that wines with low volatile acidity and low total sulfur dioxide (blue and pink dots) have higher perceived quality than other samples.
@@ -395,7 +395,7 @@ Here I present the main findings from analysis of this dataset.
 
 1. The density of wine largely depends on the alcohol content as depicted in the plot below.
 ```{r echo=FALSE, warning=FALSE}
-alcoholDensityPlot + 
+alcoholDensityPlot +
   ggtitle("Density of wine vs. alcohol content") +
   xlab("Alcohol (% by volume)") +
   ylab("Density (g / cm^3)")
@@ -419,7 +419,7 @@ alcoholQualityPlot = alcoholQualityPlot +
   xlab("Quality rating")
 sulfurDioxideQualityPlot = sulfurDioxideQualityPlot +
   ggtitle("Quality of wine vs. Total Sulfur Dioxide") +
-  ylab("Total Sulfur Dioxide (mg / dm^3)") + 
+  ylab("Total Sulfur Dioxide (mg / dm^3)") +
   xlab("Quality rating")
 volatileAcidityQualityPlot = volatileAcidityQualityPlot +
   ggtitle("Quality of wine vs. Volatile Acidity") +
@@ -439,7 +439,7 @@ grid.arrange(alcoholQualityPlot,
 ```
 From the plot, it seems like the perceived quality of wine is proportional to the alcohol content and volatile acidity and it's inversely proportional to the total sulfur dioxide and chlorides.
 
-## Reflections 
+## Reflections
 
 The major success and learning from this project was that I could understand through scatter plots, which of the various chemical properties of wine affect the perceived quality of wine.
 
